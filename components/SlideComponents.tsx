@@ -342,7 +342,13 @@ export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                  
                  {data.content.audioSrc && (
                     <div className="w-full md:w-auto">
-                        <audio controls className="h-8 md:h-10 w-full md:w-64 focus:outline-none shadow-sm rounded-full bg-white"><source src={data.content.audioSrc} type="audio/mpeg" /></audio>
+                        <audio 
+                            key={data.content.audioSrc} 
+                            controls 
+                            className="h-8 md:h-10 w-full md:w-64 focus:outline-none shadow-sm rounded-full bg-white"
+                        >
+                            <source src={data.content.audioSrc} type="audio/mpeg" />
+                        </audio>
                     </div>
                  )}
              </div>
