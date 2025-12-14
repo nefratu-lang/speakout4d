@@ -1,8 +1,20 @@
 import { SlideType, SlideData, QuestionTF, QuestionMC, GrammarItem, DrillItem, MatchingPair, Vocabulary, ChecklistItem, QAItem, ScrambleItem, DebriefItem, ImperativeSign, MissionLogStep, GrammarQuizItem, KeyPoint } from './types';
 
-// Asset paths
-// ÖNEMLİ: Bu dosyaları projenizin ana dizinindeki 'public/media' klasörüne koyunuz.
-// Vercel deployment'ında '/media/dosya_adi' yolu public klasörünü işaret eder.
+// ==========================================
+// 📂 DOSYA KURULUM REHBERİ (MEDIA ASSETS)
+// ==========================================
+// Projenin ana dizininde (index.html'in yanında) 'public' klasörü oluşturun.
+// Onun içine 'media' klasörü oluşturun.
+// Aşağıdaki dosyaları oraya atın:
+//
+// 1. uludag_spring.jpg   (Arka plan)
+// 2. hiker_advice.jpg    (Tavsiye veren kişi)
+// 3. snow_trees.jpg      (Ekstra görsel)
+// 4. background_snow.mp4 (Kar yağış videosu)
+// 5. uludag_part1.mp3    (Ses dosyası 1)
+// 6. uludag_part2.mp3    (Ses dosyası 2)
+// ==========================================
+
 const uludagSpring = '/media/uludag_spring.jpg';
 const hikerAdvice = '/media/hiker_advice.jpg';
 const snowTrees = '/media/snow_trees.jpg'; 
