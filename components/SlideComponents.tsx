@@ -69,29 +69,30 @@ const TextReferenceModal: React.FC<{ text?: string; highlights?: HighlightData[]
         <>
             <button 
                 onClick={() => setIsOpen(true)}
-                className="absolute top-4 right-4 z-30 bg-white hover:bg-ocean-50 text-ocean-700 font-bold py-2 px-4 rounded-xl border-2 border-ocean-200 shadow-md flex items-center gap-2 transition-transform hover:scale-105 active:scale-95"
+                className="absolute top-2 right-2 md:top-4 md:right-4 z-30 bg-white hover:bg-ocean-50 text-ocean-700 font-bold py-2 px-3 md:px-4 rounded-xl border-2 border-ocean-200 shadow-md flex items-center gap-2 transition-transform hover:scale-105 active:scale-95 text-sm md:text-base"
             >
-                <span className="text-xl">📜</span>
+                <span className="text-lg md:text-xl">📜</span>
                 <span className="hidden md:inline">Show Mission Intel</span>
+                <span className="md:hidden">Text</span>
             </button>
 
             {isOpen && (
                 <div className="absolute inset-0 z-40 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-200">
                     <div className="bg-[#fffdf5] w-full max-w-4xl max-h-full rounded-2xl shadow-2xl flex flex-col relative border-4 border-ocean-800">
-                        <div className="bg-ocean-800 text-white p-4 flex justify-between items-center shrink-0">
+                        <div className="bg-ocean-800 text-white p-3 md:p-4 flex justify-between items-center shrink-0">
                              <div className="flex flex-col">
-                                <h3 className="font-bold text-xl tracking-widest uppercase">Mission Intel</h3>
-                                <p className="text-ocean-200 text-xs">Evidence matches the active question color</p>
+                                <h3 className="font-bold text-lg md:text-xl tracking-widest uppercase">Mission Intel</h3>
+                                <p className="text-ocean-200 text-[10px] md:text-xs">Evidence matches the active question color</p>
                              </div>
-                             <button onClick={() => setIsOpen(false)} className="hover:text-red-300 font-bold text-2xl">✕</button>
+                             <button onClick={() => setIsOpen(false)} className="hover:text-red-300 font-bold text-2xl px-2">✕</button>
                         </div>
                         
-                        <div className="p-8 overflow-y-auto custom-scrollbar font-serif text-lg md:text-xl leading-relaxed text-slate-800 whitespace-pre-wrap">
+                        <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar font-serif text-base md:text-xl leading-relaxed text-slate-800 whitespace-pre-wrap">
                             {renderHighlightedText()}
                         </div>
 
-                        <div className="p-4 bg-ocean-50 border-t border-ocean-200 text-center shrink-0">
-                            <button onClick={() => setIsOpen(false)} className="bg-ocean-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-ocean-700">Close Intel</button>
+                        <div className="p-3 md:p-4 bg-ocean-50 border-t border-ocean-200 text-center shrink-0">
+                            <button onClick={() => setIsOpen(false)} className="bg-ocean-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-ocean-700 text-sm md:text-base">Close Intel</button>
                         </div>
                     </div>
                 </div>
@@ -110,15 +111,15 @@ export const CoverSlide: React.FC<{ data: SlideData }> = ({ data }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/50 to-transparent"></div>
        </div>
 
-       <div className="relative z-10 text-center px-4 animate-in zoom-in duration-1000">
+       <div className="relative z-10 text-center px-4 animate-in zoom-in duration-1000 w-full max-w-4xl">
           <div className="mb-6 flex justify-center">
-             <div className="w-24 h-24 md:w-40 md:h-40 rounded-full bg-ocean-100/10 backdrop-blur border-4 border-gold-500 flex items-center justify-center text-6xl md:text-8xl shadow-[0_0_40px_rgba(217,119,6,0.6)]">🏔️</div>
+             <div className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-ocean-100/10 backdrop-blur border-4 border-gold-500 flex items-center justify-center text-5xl md:text-8xl shadow-[0_0_40px_rgba(217,119,6,0.6)]">🏔️</div>
           </div>
-          <h1 className="text-5xl md:text-8xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-200 via-green-400 to-green-200 drop-shadow-lg mb-6 tracking-wide uppercase">{data.title}</h1>
-          <p className="text-xl md:text-4xl text-ocean-100 font-light tracking-widest uppercase border-t border-ocean-700 pt-6 inline-block">{data.subtitle}</p>
-          <div className="mt-16 animate-bounce">
-            <p className="text-lg text-ocean-300 mb-2">Start Adventure</p>
-            <span className="text-4xl text-gold-500">▼</span>
+          <h1 className="text-4xl md:text-8xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-200 via-green-400 to-green-200 drop-shadow-lg mb-4 md:mb-6 tracking-wide uppercase leading-tight">{data.title}</h1>
+          <p className="text-lg md:text-4xl text-ocean-100 font-light tracking-widest uppercase border-t border-ocean-700 pt-4 md:pt-6 inline-block">{data.subtitle}</p>
+          <div className="mt-12 md:mt-16 animate-bounce">
+            <p className="text-base md:text-lg text-ocean-300 mb-2">Start Adventure</p>
+            <span className="text-3xl md:text-4xl text-gold-500">▼</span>
           </div>
        </div>
     </div>
@@ -129,21 +130,21 @@ export const CoverSlide: React.FC<{ data: SlideData }> = ({ data }) => {
 export const ObjectivesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   return (
     <div className="h-full w-full flex flex-col items-center p-4 md:p-8 overflow-y-auto bg-slate-50">
-      <div className="max-w-7xl w-full flex flex-col gap-6">
-        <div className="text-center mb-4">
-           <h2 className="text-3xl md:text-4xl font-serif font-bold text-ocean-900 mb-2">{data.title}</h2>
-           <p className="text-slate-500 text-lg">{data.subtitle}</p>
+      <div className="max-w-7xl w-full flex flex-col gap-4 md:gap-6 pb-20">
+        <div className="text-center mb-2 md:mb-4">
+           <h2 className="text-2xl md:text-4xl font-serif font-bold text-ocean-900 mb-1">{data.title}</h2>
+           <p className="text-slate-500 text-sm md:text-lg">{data.subtitle}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 bg-white rounded-3xl p-8 shadow-lg border-l-8 border-ocean-500 flex flex-col justify-center animate-in slide-in-from-left-5 duration-500">
-                <div className="flex items-center gap-3 mb-6">
-                    <span className="text-4xl">🎯</span>
-                    <h3 className="text-2xl font-bold text-ocean-800">Lesson Objectives</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-lg border-l-8 border-ocean-500 flex flex-col justify-center animate-in slide-in-from-left-5 duration-500">
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                    <span className="text-3xl md:text-4xl">🎯</span>
+                    <h3 className="text-xl md:text-2xl font-bold text-ocean-800">Lesson Objectives</h3>
                 </div>
-                <ul className="space-y-4">
+                <ul className="space-y-3 md:space-y-4">
                     {data.content.objectives.map((obj: string, i: number) => (
-                        <li key={i} className="flex items-start gap-3 text-lg md:text-xl text-slate-700">
-                            <span className="text-ocean-500 font-bold mt-1">✓</span>
+                        <li key={i} className="flex items-start gap-3 text-base md:text-xl text-slate-700">
+                            <span className="text-ocean-500 font-bold mt-1 shrink-0">✓</span>
                             {obj}
                         </li>
                     ))}
@@ -152,29 +153,29 @@ export const ObjectivesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
             <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl p-6 shadow-md border border-orange-100 animate-in slide-in-from-right-5 duration-700">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-3xl">💡</span>
-                    <h3 className="text-xl font-bold text-orange-800">Why this is important</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-orange-800">Why this is important</h3>
                 </div>
-                <p className="text-slate-700 italic leading-relaxed">"{data.content.importance}"</p>
+                <p className="text-slate-700 italic leading-relaxed text-sm md:text-base">"{data.content.importance}"</p>
             </div>
             <div className="bg-ocean-50 rounded-3xl p-6 shadow-md border border-ocean-100 animate-in slide-in-from-bottom-5 delay-100 duration-500">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-3xl">🔧</span>
-                    <h3 className="text-xl font-bold text-ocean-800">Grammar Focus</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-ocean-800">Grammar Focus</h3>
                 </div>
                 <ul className="space-y-2">
                     {data.content.grammar.map((g: string, i: number) => (
-                        <li key={i} className="bg-white px-3 py-2 rounded-lg text-ocean-700 font-medium shadow-sm border border-ocean-100 text-center">{g}</li>
+                        <li key={i} className="bg-white px-3 py-2 rounded-lg text-ocean-700 font-medium shadow-sm border border-ocean-100 text-center text-sm md:text-base">{g}</li>
                     ))}
                 </ul>
             </div>
             <div className="bg-green-50 rounded-3xl p-6 shadow-md border border-green-100 animate-in slide-in-from-bottom-5 delay-200 duration-500">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-3xl">🔤</span>
-                    <h3 className="text-xl font-bold text-green-800">Vocabulary</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-green-800">Vocabulary</h3>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-wrap gap-2">
                      {data.content.vocabulary.map((v: string, i: number) => (
-                        <span key={i} className="bg-white px-3 py-2 rounded-lg text-green-700 text-sm border border-green-100">{v}</span>
+                        <span key={i} className="bg-white px-3 py-2 rounded-lg text-green-700 text-xs md:text-sm border border-green-100">{v}</span>
                     ))}
                 </div>
             </div>
@@ -182,7 +183,7 @@ export const ObjectivesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                 <div className="absolute top-0 right-0 opacity-10 text-9xl -mr-4 -mt-4">🏞</div>
                 <div className="flex items-center gap-2 mb-4 relative z-10">
                     <span className="text-3xl">🧭</span>
-                    <h3 className="text-xl font-bold text-ocean-100">Cultural Context</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-ocean-100">Cultural Context</h3>
                 </div>
                 <p className="text-ocean-100 relative z-10 text-sm md:text-base leading-relaxed">{data.content.context}</p>
             </div>
@@ -192,14 +193,11 @@ export const ObjectivesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   );
 };
 
-// --- Ice Breaker (SIMPLIFIED - No internal navigation) ---
-export const IceBreakerSlide: React.FC<{ data: SlideData }> = ({ data }) => {
+// --- Ice Breaker (SIMPLIFIED - Mobile Friendly) ---
+export const IceBreakerSlide: React.FC<{ data: SlideData; onNext?: () => void }> = ({ data, onNext }) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  
-  // Directly use the content as the scenario, since we flattened the structure
   const content = data.content;
 
-  // Reset selection when slide changes
   useEffect(() => {
     setSelectedOption(null);
   }, [data.id]);
@@ -213,31 +211,30 @@ export const IceBreakerSlide: React.FC<{ data: SlideData }> = ({ data }) => {
         </div>
       )}
 
-      <div className="relative z-10 w-full max-w-5xl flex flex-col bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl animate-in fade-in zoom-in-95 duration-500 my-4 shrink-0">
-          <div className="p-6 border-b border-white/10 flex justify-between items-center bg-black/20 shrink-0">
+      <div className="relative z-10 w-full max-w-5xl flex flex-col bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl animate-in fade-in zoom-in-95 duration-500 my-4 shrink-0 pb-10">
+          <div className="p-4 md:p-6 border-b border-white/10 flex justify-between items-center bg-black/20 shrink-0">
               <div>
-                  <h2 className="text-2xl font-bold text-ocean-300 uppercase tracking-widest">{data.title}</h2>
-                  <p className="text-slate-300 text-sm">{data.subtitle}</p>
+                  <h2 className="text-lg md:text-2xl font-bold text-ocean-300 uppercase tracking-widest">{data.title}</h2>
+                  <p className="text-slate-300 text-xs md:text-sm">{data.subtitle}</p>
               </div>
           </div>
 
-          <div className="flex-1 p-8 md:p-12 flex flex-col justify-center relative min-h-0">
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 leading-tight text-center">{content.question}</h3>
+          <div className="flex-1 p-4 md:p-12 flex flex-col justify-center relative min-h-0">
+              <h3 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight text-center">{content.question}</h3>
               
               {content.type === 'poll' && (
-                  <div className="relative flex flex-col md:flex-row gap-8 justify-center items-stretch">
+                  <div className="relative flex flex-col md:flex-row gap-4 md:gap-8 justify-center items-stretch">
                       {content.options.map((option: any, idx: number) => (
                           <button 
                             key={idx}
                             onClick={() => setSelectedOption(idx)}
-                            className={`flex-1 p-8 rounded-3xl border-4 text-center flex flex-col items-center justify-center gap-4 transition-all hover:scale-105 active:scale-95 group ${selectedOption === idx ? idx === 0 ? 'bg-red-600 border-red-400 shadow-[0_0_30px_rgba(220,38,38,0.5)]' : 'bg-blue-600 border-blue-400 shadow-[0_0_30px_rgba(37,99,235,0.5)]' : 'bg-black/40 border-slate-600 hover:border-slate-400'}`}
+                            className={`flex-1 p-4 md:p-8 rounded-3xl border-4 text-center flex flex-col items-center justify-center gap-3 md:gap-4 transition-all hover:scale-105 active:scale-95 group ${selectedOption === idx ? idx === 0 ? 'bg-red-600 border-red-400 shadow-[0_0_30px_rgba(220,38,38,0.5)]' : 'bg-blue-600 border-blue-400 shadow-[0_0_30px_rgba(37,99,235,0.5)]' : 'bg-black/40 border-slate-600 hover:border-slate-400'}`}
                           >
-                              <span className="text-6xl md:text-8xl group-hover:animate-bounce">{option.icon}</span>
-                              <div className="flex flex-col gap-2">
-                                  <span className="text-xl md:text-2xl font-bold leading-snug">{option.text}</span>
-                                  {/* Render Subtext (Translation) if exists */}
+                              <span className="text-5xl md:text-8xl group-hover:animate-bounce">{option.icon}</span>
+                              <div className="flex flex-col gap-1 md:gap-2">
+                                  <span className="text-lg md:text-2xl font-bold leading-snug">{option.text}</span>
                                   {option.subtext && (
-                                      <span className="text-sm md:text-base text-yellow-300 font-serif italic bg-black/30 px-2 py-1 rounded inline-block">
+                                      <span className="text-xs md:text-base text-yellow-300 font-serif italic bg-black/30 px-2 py-1 rounded inline-block">
                                           {option.subtext}
                                       </span>
                                   )}
@@ -245,25 +242,25 @@ export const IceBreakerSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                           </button>
                       ))}
                       
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 bg-yellow-500 rounded-full flex items-center justify-center font-black text-slate-900 text-2xl border-4 border-slate-900 shadow-xl z-10 rotate-12 hidden md:flex">VS</div>
+                      <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 bg-yellow-500 rounded-full items-center justify-center font-black text-slate-900 text-2xl border-4 border-slate-900 shadow-xl z-10 rotate-12">VS</div>
                   </div>
               )}
 
               {content.type === 'external_link' && (
                   <div className="w-full flex flex-col items-center justify-center text-center animate-in zoom-in duration-300">
-                       <div className="p-10 bg-ocean-900/50 rounded-3xl border-4 border-ocean-500/50 shadow-2xl flex flex-col items-center gap-6 max-w-2xl w-full hover:border-ocean-400 transition-colors group">
-                           <div className="w-24 h-24 bg-ocean-600 rounded-full flex items-center justify-center text-5xl shadow-[0_0_30px_rgba(16,185,129,0.5)] group-hover:scale-110 transition-transform">🌐</div>
-                           <h3 className="text-3xl font-bold text-white">External Mission Detected</h3>
-                           <p className="text-ocean-200 text-lg">Click below to launch the video quiz on the secure server.</p>
-                           <a href={content.linkUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-xl font-black rounded-xl shadow-xl transform transition-all hover:scale-105 hover:-translate-y-1 flex items-center gap-3 uppercase tracking-wider"><span>🚀</span> {content.buttonText} <span>↗</span></a>
+                       <div className="p-6 md:p-10 bg-ocean-900/50 rounded-3xl border-4 border-ocean-500/50 shadow-2xl flex flex-col items-center gap-4 md:gap-6 max-w-2xl w-full hover:border-ocean-400 transition-colors group">
+                           <div className="w-16 h-16 md:w-24 md:h-24 bg-ocean-600 rounded-full flex items-center justify-center text-3xl md:text-5xl shadow-[0_0_30px_rgba(16,185,129,0.5)] group-hover:scale-110 transition-transform">🌐</div>
+                           <h3 className="text-xl md:text-3xl font-bold text-white">External Mission Detected</h3>
+                           <p className="text-ocean-200 text-base md:text-lg">Click below to launch the video quiz on the secure server.</p>
+                           <a href={content.linkUrl} target="_blank" rel="noopener noreferrer" className="px-6 py-3 md:px-8 md:py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-lg md:text-xl font-black rounded-xl shadow-xl transform transition-all hover:scale-105 hover:-translate-y-1 flex items-center gap-3 uppercase tracking-wider"><span>🚀</span> {content.buttonText} <span>↗</span></a>
                        </div>
                   </div>
               )}
               
-              <div className="mt-8 pt-6 border-t border-white/10 text-center">
-                  <p className="text-yellow-500/80 text-sm font-mono flex items-center justify-center gap-2"><span>📢</span> {content.prompt || "Discussion Time"}</p>
+              <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/10 text-center">
+                  <p className="text-yellow-500/80 text-xs md:text-sm font-mono flex items-center justify-center gap-2"><span>📢</span> {content.prompt || "Discussion Time"}</p>
                   {content.footnote && (
-                      <div className="mt-4 text-slate-400 text-xs italic opacity-70">
+                      <div className="mt-2 md:mt-4 text-slate-400 text-[10px] md:text-xs italic opacity-70">
                           {content.footnote}
                       </div>
                   )}
@@ -274,7 +271,7 @@ export const IceBreakerSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   );
 };
 
-// --- Reading (REFACTORED for Full Width) ---
+// --- Reading (REFACTORED for Mobile & Full Width) ---
 export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   const [activeVocab, setActiveVocab] = useState<Vocabulary | null>(null);
   const [showFactSheet, setShowFactSheet] = useState(false);
@@ -322,26 +319,26 @@ export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
 
       {/* Full Page Text Container - No Margins, No Radius */}
       <div className="relative z-10 w-full h-full flex flex-col bg-[#fffdf5]/90 backdrop-blur-sm overflow-hidden">
-          {/* Header Bar */}
-          <div className="p-4 md:px-8 flex flex-col md:flex-row justify-between items-center border-b border-ocean-200 bg-white/50 shrink-0">
-             <div className="flex-1">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-ocean-900">{data.title}</h2>
-                <p className="text-sm md:text-base text-slate-500">{data.subtitle}</p>
+          {/* Header Bar - Stacks on Mobile */}
+          <div className="p-3 md:px-8 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-ocean-200 bg-white/50 shrink-0 gap-3 md:gap-0">
+             <div className="flex-1 w-full md:w-auto">
+                <h2 className="text-xl md:text-3xl font-serif font-bold text-ocean-900 leading-tight">{data.title}</h2>
+                <p className="text-xs md:text-base text-slate-500 truncate">{data.subtitle}</p>
              </div>
              
-             <div className="flex items-center gap-4 mt-2 md:mt-0">
+             <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
                  {/* Key Point (Trivia) Button */}
                  {data.content.keyPoints && (
                      <button 
                         onClick={() => setShowFactSheet(true)}
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md transition-transform hover:scale-105 active:scale-95 text-sm md:text-base font-bold uppercase tracking-wider"
+                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full shadow-md transition-transform hover:scale-105 active:scale-95 text-xs md:text-base font-bold uppercase tracking-wider shrink-0"
                      >
-                        <span className="text-xl">📍</span> Zone Info
+                        <span className="text-base md:text-xl">📍</span> <span className="hidden md:inline">Zone Info</span><span className="md:hidden">Info</span>
                      </button>
                  )}
                  
                  {data.content.audioSrc && (
-                    <div className="w-full md:w-auto">
+                    <div className="flex-1 md:flex-none">
                         <audio 
                             key={data.content.audioSrc} 
                             controls 
@@ -355,18 +352,18 @@ export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
           </div>
 
           {/* Scrolling Content Area */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 relative">
-             <div className="font-serif text-lg md:text-2xl leading-relaxed text-slate-800 text-left space-y-6 max-w-5xl mx-auto pb-24">
+          <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-12 relative">
+             <div className="font-serif text-lg md:text-2xl leading-relaxed text-slate-800 text-left space-y-4 md:space-y-6 max-w-5xl mx-auto pb-32 md:pb-24">
                {paragraphs.map((para: string, pIdx: number) => {
                  if (para.trim().startsWith("PART 2")) {
-                     return <h4 key={pIdx} className="text-3xl font-black text-orange-600 uppercase tracking-widest mt-12 mb-4 border-b-4 border-orange-200 inline-block">{para}</h4>;
+                     return <h4 key={pIdx} className="text-2xl md:text-3xl font-black text-orange-600 uppercase tracking-widest mt-8 md:mt-12 mb-2 md:mb-4 border-b-4 border-orange-200 inline-block">{para}</h4>;
                  }
                  return <p key={pIdx} className="mb-4">{renderInteractiveText(para)}</p>;
                })}
                 {/* Decorative Footer Image within scroll */}
                 {data.content.footerImage && (
-                    <div className="mt-12 w-full h-64 md:h-80 rounded-none md:rounded-xl overflow-hidden shadow-lg border-y-4 border-white">
-                        <img src={data.content.footerImage} className="w-full h-full object-cover hover:scale-105 transition-transform duration-[20s]" alt="Atmosphere" />
+                    <div className="mt-8 md:mt-12 w-full h-48 md:h-80 rounded-xl overflow-hidden shadow-lg border-y-4 border-white">
+                        <img src={data.content.footerImage} className="w-full h-full object-cover" alt="Atmosphere" />
                     </div>
                 )}
              </div>
@@ -375,24 +372,23 @@ export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
           {/* Fact Sheet Modal */}
           {showFactSheet && data.content.keyPoints && (
               <div className="absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-                  <div className="bg-white max-w-3xl w-full rounded-3xl shadow-2xl overflow-hidden border-4 border-blue-500 flex flex-col">
-                      <div className="bg-blue-600 text-white p-6 flex justify-between items-center">
+                  <div className="bg-white max-w-3xl w-full rounded-3xl shadow-2xl overflow-hidden border-4 border-blue-500 flex flex-col max-h-[90vh]">
+                      <div className="bg-blue-600 text-white p-4 md:p-6 flex justify-between items-center shrink-0">
                           <div>
-                            <h3 className="text-2xl font-black uppercase tracking-widest">Tactical Data</h3>
-                            <p className="text-blue-200 text-sm">Additional Intelligence</p>
+                            <h3 className="text-xl md:text-2xl font-black uppercase tracking-widest">Tactical Data</h3>
                           </div>
-                          <button onClick={() => setShowFactSheet(false)} className="text-3xl hover:text-blue-200 hover:rotate-90 transition-transform">✕</button>
+                          <button onClick={() => setShowFactSheet(false)} className="text-3xl hover:text-blue-200">✕</button>
                       </div>
-                      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50">
+                      <div className="p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 bg-slate-50 overflow-y-auto">
                           {data.content.keyPoints.map((point: KeyPoint, idx: number) => (
-                              <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm border-2 border-blue-100 flex flex-col gap-2">
+                              <div key={idx} className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border-2 border-blue-100 flex flex-col gap-2">
                                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-2xl mb-2">ℹ️</div>
-                                  <h4 className="font-bold text-blue-800 text-lg uppercase">{point.title}</h4>
-                                  <p className="text-slate-700 leading-relaxed font-medium">{point.content}</p>
+                                  <h4 className="font-bold text-blue-800 text-base md:text-lg uppercase">{point.title}</h4>
+                                  <p className="text-slate-700 leading-relaxed font-medium text-sm md:text-base">{point.content}</p>
                               </div>
                           ))}
                       </div>
-                      <div className="bg-slate-100 p-4 text-center border-t border-slate-200">
+                      <div className="bg-slate-100 p-4 text-center border-t border-slate-200 shrink-0">
                           <button onClick={() => setShowFactSheet(false)} className="px-8 py-2 bg-slate-800 text-white rounded-lg font-bold hover:bg-black">Dismiss</button>
                       </div>
                   </div>
@@ -404,8 +400,8 @@ export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
               {activeVocab && (
                   <div className="bg-ocean-900 text-white p-6 md:p-8 shadow-[0_-10px_40px_rgba(0,0,0,0.3)] border-t border-ocean-600 flex flex-col md:flex-row gap-4 md:items-center justify-between">
                       <div>
-                          <h4 className="text-3xl font-bold capitalize text-yellow-400 mb-1">{activeVocab.word}</h4>
-                          <p className="text-xl text-ocean-100 leading-snug">{activeVocab.definition}</p>
+                          <h4 className="text-2xl md:text-3xl font-bold capitalize text-yellow-400 mb-1">{activeVocab.word}</h4>
+                          <p className="text-lg md:text-xl text-ocean-100 leading-snug">{activeVocab.definition}</p>
                       </div>
                       <button onClick={() => setActiveVocab(null)} className="self-end md:self-center px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm font-bold uppercase tracking-wider transition-colors">Close</button>
                   </div>
@@ -416,23 +412,23 @@ export const ReadingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   );
 };
 
-// --- MISSION LOG SLIDE (REPLACED BY MEDIA SLIDE - KEEPING FOR REFERENCE IF NEEDED, BUT CURRENTLY UNUSED) ---
+// --- MISSION LOG SLIDE ---
 export const MissionLogSlide: React.FC<{ data: SlideData }> = ({ data }) => {
     return null;
 };
 
-// --- MEDIA SLIDE (New Implementation: Launch Card instead of iframe) ---
+// --- MEDIA SLIDE ---
 export const MediaSlide: React.FC<{ data: SlideData }> = ({ data }) => {
     return (
-        <div className="h-full w-full flex flex-col items-center justify-center p-8 bg-slate-900 relative overflow-hidden">
+        <div className="h-full w-full flex flex-col items-center justify-center p-4 md:p-8 bg-slate-900 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_#1e293b_0%,_#0f172a_100%)]"></div>
             <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "40px 40px", opacity: 0.05 }}></div>
 
             <div className="relative z-10 max-w-4xl w-full text-center flex flex-col items-center animate-in zoom-in duration-500">
-                <div className="mb-10">
-                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-2">{data.title}</h2>
-                    <div className="inline-block px-4 py-1 border border-yellow-500 rounded-full bg-yellow-500/10 text-yellow-400 font-mono text-lg tracking-wider shadow-[0_0_10px_rgba(234,179,8,0.3)]">
+                <div className="mb-6 md:mb-10">
+                    <h2 className="text-3xl md:text-5xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-2">{data.title}</h2>
+                    <div className="inline-block px-4 py-1 border border-yellow-500 rounded-full bg-yellow-500/10 text-yellow-400 font-mono text-sm md:text-lg tracking-wider shadow-[0_0_10px_rgba(234,179,8,0.3)]">
                         {data.subtitle}
                     </div>
                 </div>
@@ -455,13 +451,13 @@ export const MediaSlide: React.FC<{ data: SlideData }> = ({ data }) => {
 
                     {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-5xl shadow-2xl group-hover:scale-110 transition-transform duration-300 group-hover:animate-pulse text-black pl-2 border-4 border-white/20">
+                        <div className="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-3xl md:text-5xl shadow-2xl group-hover:scale-110 transition-transform duration-300 group-hover:animate-pulse text-black pl-2 border-4 border-white/20">
                             ▶
                         </div>
-                        <span className="mt-8 text-3xl font-black text-white uppercase tracking-widest drop-shadow-md group-hover:text-yellow-400 transition-colors">
+                        <span className="mt-4 md:mt-8 text-xl md:text-3xl font-black text-white uppercase tracking-widest drop-shadow-md group-hover:text-yellow-400 transition-colors">
                             Launch Mission
                         </span>
-                        <div className="mt-3 flex items-center gap-2 text-slate-300 font-mono text-sm bg-black/50 px-4 py-1 rounded-full border border-white/10">
+                        <div className="mt-2 md:mt-3 flex items-center gap-2 text-slate-300 font-mono text-xs md:text-sm bg-black/50 px-4 py-1 rounded-full border border-white/10">
                             <span>↗</span> Opens in secure window
                         </div>
                     </div>
@@ -498,25 +494,25 @@ export const ComprehensionTFSlide: React.FC<{ data: SlideData }> = ({ data }) =>
     .filter((h: HighlightData) => h.text !== '');
 
   return (
-    <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-slate-50 justify-start pt-10 relative">
+    <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-slate-50 justify-start pt-10 pb-20 relative">
       <TextReferenceModal text={data.content.referenceText} highlights={highlights} />
 
-      <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-5xl w-full border border-slate-200 shrink-0">
-        <h3 className="text-3xl font-bold text-ocean-800 mb-8 text-center border-b pb-4 flex items-center justify-center gap-3"><span>✅</span> {data.subtitle}</h3>
-        <div className="space-y-4">
+      <div className="bg-white rounded-3xl shadow-xl p-4 md:p-10 max-w-5xl w-full border border-slate-200 shrink-0">
+        <h3 className="text-2xl md:text-3xl font-bold text-ocean-800 mb-6 text-center border-b pb-4 flex items-center justify-center gap-3"><span>✅</span> {data.subtitle}</h3>
+        <div className="space-y-3 md:space-y-4">
           {data.content.questions.map((q: QuestionTF, idx: number) => {
             const status = answers[q.id];
             const colorClass = HIGHLIGHT_COLORS[idx % HIGHLIGHT_COLORS.length].split(' ')[0]; // Extract bg class
             return (
               <div key={q.id} className="relative">
-                <div className={`flex flex-col md:flex-row items-center justify-between p-4 rounded-2xl transition-all border-l-8 ${status === true ? 'bg-green-50 border-green-500' : status === false ? 'bg-red-50 border-red-500' : 'bg-slate-50 hover:bg-ocean-50 border-slate-300'}`} style={{ borderLeftColor: status === undefined ? undefined : undefined }}>
-                  <div className="flex items-center gap-3 flex-1 mb-3 md:mb-0">
+                <div className={`flex flex-col md:flex-row items-center justify-between p-3 md:p-4 rounded-2xl transition-all border-l-8 ${status === true ? 'bg-green-50 border-green-500' : status === false ? 'bg-red-50 border-red-500' : 'bg-slate-50 hover:bg-ocean-50 border-slate-300'}`} style={{ borderLeftColor: status === undefined ? undefined : undefined }}>
+                  <div className="flex items-center gap-3 flex-1 mb-3 md:mb-0 w-full">
                       <span className={`text-xs font-bold px-2 py-1 rounded text-slate-800 border border-black/10 ${colorClass}`}>Q{q.id}</span>
-                      <p className="text-lg md:text-xl font-medium text-slate-700">{q.statement}</p>
+                      <p className="text-base md:text-xl font-medium text-slate-700">{q.statement}</p>
                   </div>
-                  <div className="flex gap-3 shrink-0">
-                    <button onClick={() => handleAnswer(q.id, true, q.isTrue)} disabled={status !== undefined} className={`px-6 py-2 rounded-xl font-bold text-lg transition-all ${status === undefined ? 'bg-white border border-slate-300 hover:bg-ocean-50' : (q.isTrue ? 'bg-green-600 text-white' : 'opacity-20')}`}>True</button>
-                    <button onClick={() => handleAnswer(q.id, false, q.isTrue)} disabled={status !== undefined} className={`px-6 py-2 rounded-xl font-bold text-lg transition-all ${status === undefined ? 'bg-white border border-slate-300 hover:bg-ocean-50' : (!q.isTrue ? 'bg-green-600 text-white' : 'opacity-20')}`}>False</button>
+                  <div className="flex gap-3 shrink-0 w-full md:w-auto justify-center">
+                    <button onClick={() => handleAnswer(q.id, true, q.isTrue)} disabled={status !== undefined} className={`flex-1 md:flex-none px-6 py-2 rounded-xl font-bold text-lg transition-all ${status === undefined ? 'bg-white border border-slate-300 hover:bg-ocean-50' : (q.isTrue ? 'bg-green-600 text-white' : 'opacity-20')}`}>True</button>
+                    <button onClick={() => handleAnswer(q.id, false, q.isTrue)} disabled={status !== undefined} className={`flex-1 md:flex-none px-6 py-2 rounded-xl font-bold text-lg transition-all ${status === undefined ? 'bg-white border border-slate-300 hover:bg-ocean-50' : (!q.isTrue ? 'bg-green-600 text-white' : 'opacity-20')}`}>False</button>
                   </div>
                 </div>
                 {status !== undefined && q.explanation && (
@@ -544,13 +540,13 @@ export const ComprehensionMCSlide: React.FC<{ data: SlideData }> = ({ data }) =>
   })).filter((h: HighlightData) => h.text !== '');
 
   return (
-    <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-gradient-to-br from-ocean-900 to-ocean-700 relative justify-start pt-10">
+    <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-gradient-to-br from-ocean-900 to-ocean-700 relative justify-start pt-10 pb-20">
       <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
       <TextReferenceModal text={data.content.referenceText} highlights={highlights} />
 
       <div className="w-full max-w-7xl relative z-10 py-6 shrink-0">
-         <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8 drop-shadow-md tracking-wider border-b border-ocean-600 pb-4 inline-block w-full">{data.subtitle}</h2>
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-20">
+         <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-6 md:mb-8 drop-shadow-md tracking-wider border-b border-ocean-600 pb-4 inline-block w-full">{data.subtitle}</h2>
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {data.content.questions.map((q: QuestionMC, idx: number) => {
                const selection = selections[q.id];
                const showResult = selection !== undefined;
@@ -558,13 +554,13 @@ export const ComprehensionMCSlide: React.FC<{ data: SlideData }> = ({ data }) =>
 
                return (
                   <div key={q.id} className="bg-ocean-50 rounded-2xl shadow-xl overflow-hidden flex flex-col border border-ocean-200 hover:shadow-2xl transition-shadow duration-300">
-                     <div className="bg-ocean-100 p-4 border-b border-ocean-200 flex items-start gap-3">
-                        <span className={`text-sm font-bold px-2 py-1 rounded text-slate-800 border border-black/10 shrink-0 ${highlightColor}`}>Q{q.id}</span>
-                        <h4 className="text-ocean-900 font-bold text-lg md:text-xl leading-tight mt-1">{q.question}</h4>
+                     <div className="bg-ocean-100 p-3 md:p-4 border-b border-ocean-200 flex items-start gap-3">
+                        <span className={`text-xs md:text-sm font-bold px-2 py-1 rounded text-slate-800 border border-black/10 shrink-0 ${highlightColor}`}>Q{q.id}</span>
+                        <h4 className="text-ocean-900 font-bold text-base md:text-xl leading-tight mt-1">{q.question}</h4>
                      </div>
-                     <div className="p-4 space-y-2 flex-1">
+                     <div className="p-3 md:p-4 space-y-2 flex-1">
                         {q.options.map((opt, optIdx) => {
-                           let btnClass = "w-full text-left p-3 rounded-lg border-2 text-base md:text-lg font-medium transition-all relative ";
+                           let btnClass = "w-full text-left p-2 md:p-3 rounded-lg border-2 text-sm md:text-lg font-medium transition-all relative ";
                            if (showResult) {
                               if (optIdx === q.correctIndex) btnClass += "bg-green-100 border-green-500 text-green-900 font-bold";
                               else if (optIdx === selection && optIdx !== q.correctIndex) btnClass += "bg-red-100 border-red-400 text-red-900 opacity-60";
@@ -598,12 +594,12 @@ export const GrammarSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   const checkAnswers = () => setChecked(true);
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl w-full border border-ocean-100 relative">
+    <div className="h-full flex flex-col items-center justify-center p-4 overflow-y-auto pb-20">
+      <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-4xl w-full border border-ocean-100 relative">
         <div className="absolute -top-6 -right-6 p-4 bg-yellow-100 rounded-full shadow-lg rotate-12 hidden md:block"><span className="text-5xl">✍️</span></div>
-        <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-ocean-800">{data.title}</h3>
-            <p className="text-slate-500 text-lg">{data.subtitle}</p>
+        <div className="text-center mb-6 md:mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-ocean-800">{data.title}</h3>
+            <p className="text-slate-500 text-sm md:text-lg">{data.subtitle}</p>
         </div>
         <div className="grid grid-cols-1 gap-y-4 md:gap-y-6">
           {data.content.items.map((item: GrammarItem) => {
@@ -611,21 +607,21 @@ export const GrammarSlide: React.FC<{ data: SlideData }> = ({ data }) => {
              const possibleAnswers = item.correctAnswer.split('/').map(s => s.trim().toLowerCase());
              const isCorrect = possibleAnswers.includes(userVal);
              return (
-               <div key={item.id} className="flex flex-wrap items-center text-xl md:text-2xl border-b border-slate-100 pb-2">
-                 <span className="text-slate-400 font-bold text-base mr-4 w-6">{item.id}.</span>
+               <div key={item.id} className="flex flex-wrap items-center text-lg md:text-2xl border-b border-slate-100 pb-2">
+                 <span className="text-slate-400 font-bold text-sm md:text-base mr-2 md:mr-4 w-4 md:w-6">{item.id}.</span>
                  <span className="text-slate-800 mr-2">{item.prefix}</span>
                  <div className="relative inline-block mx-1">
-                   <input type="text" value={inputs[item.id] || ""} onChange={(e) => { setChecked(false); setInputs({...inputs, [item.id]: e.target.value}); }} className={`border-b-2 bg-transparent text-center w-32 md:w-48 font-bold focus:outline-none transition-colors ${checked ? (isCorrect ? 'border-green-500 text-green-600' : 'border-red-500 text-red-600') : 'border-slate-300 focus:border-ocean-500'}`} placeholder="..." />
+                   <input type="text" value={inputs[item.id] || ""} onChange={(e) => { setChecked(false); setInputs({...inputs, [item.id]: e.target.value}); }} className={`border-b-2 bg-transparent text-center w-24 md:w-48 font-bold focus:outline-none transition-colors ${checked ? (isCorrect ? 'border-green-500 text-green-600' : 'border-red-500 text-red-600') : 'border-slate-300 focus:border-ocean-500'}`} placeholder="..." />
                  </div>
                  <span className="text-slate-800 ml-1">{item.suffix}</span>
-                 {checked && isCorrect && <span className="ml-2 text-green-500 text-2xl animate-bounce">✓</span>}
-                 {checked && !isCorrect && <span className="ml-2 text-red-500 text-base font-bold animate-pulse">({item.correctAnswer})</span>}
+                 {checked && isCorrect && <span className="ml-2 text-green-500 text-xl md:text-2xl animate-bounce">✓</span>}
+                 {checked && !isCorrect && <span className="ml-2 text-red-500 text-sm md:text-base font-bold animate-pulse">({item.correctAnswer})</span>}
                </div>
              );
           })}
         </div>
-        <div className="mt-12 flex justify-center">
-          <button onClick={checkAnswers} className="bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-3 px-16 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 text-xl">Check Answers</button>
+        <div className="mt-8 md:mt-12 flex justify-center">
+          <button onClick={checkAnswers} className="bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-3 px-12 md:px-16 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 text-lg md:text-xl">Check Answers</button>
         </div>
       </div>
     </div>
@@ -635,21 +631,21 @@ export const GrammarSlide: React.FC<{ data: SlideData }> = ({ data }) => {
 // --- Speaking ---
 export const SpeakingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
   return (
-    <div className="h-full flex flex-col items-center p-4 overflow-y-auto justify-start pt-10">
+    <div className="h-full flex flex-col items-center p-4 overflow-y-auto justify-start pt-6 md:pt-10 pb-20">
       <div className="max-w-[1600px] w-full flex flex-col gap-6 shrink-0">
         {data.content.grammarBox && (
            <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto">
                 {data.content.grammarFormula && (
-                    <div className="bg-ocean-900 text-white p-6 rounded-2xl text-center shadow-xl border-4 border-yellow-500 transform -rotate-1 shrink-0">
-                        <h4 className="text-yellow-400 font-bold tracking-widest text-sm mb-2">{data.content.grammarFormula.title}</h4>
-                        <p className="text-2xl md:text-4xl font-mono font-bold">{data.content.grammarFormula.structure}</p>
+                    <div className="bg-ocean-900 text-white p-4 md:p-6 rounded-2xl text-center shadow-xl border-4 border-yellow-500 transform -rotate-1 shrink-0">
+                        <h4 className="text-yellow-400 font-bold tracking-widest text-xs md:text-sm mb-2">{data.content.grammarFormula.title}</h4>
+                        <p className="text-lg md:text-4xl font-mono font-bold break-words">{data.content.grammarFormula.structure}</p>
                     </div>
                 )}
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
                     <div className="bg-white rounded-3xl shadow-lg border border-green-200 overflow-hidden">
-                        <div className="bg-green-600 text-white p-4 text-center"><h3 className="text-2xl font-bold uppercase tracking-wider">Good Advice (Should)</h3></div>
-                         <div className="p-6 text-xl space-y-4">
+                        <div className="bg-green-600 text-white p-3 md:p-4 text-center"><h3 className="text-lg md:text-2xl font-bold uppercase tracking-wider">Good Advice (Should)</h3></div>
+                         <div className="p-4 md:p-6 text-base md:text-xl space-y-3 md:space-y-4">
                             {data.content.grammarBox.lines.filter((l: string) => l.includes('(+)') || l.includes('SHOULD (Good')).map((line: string, i: number) => (
                                 <div key={i} className="flex justify-between border-b border-green-50 pb-2">
                                      <span className="text-green-800 font-medium">{line.replace('(+)', '').replace('SHOULD (Good idea / Advice)', '')}</span>
@@ -659,8 +655,8 @@ export const SpeakingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                     </div>
 
                      <div className="bg-white rounded-3xl shadow-lg border border-red-200 overflow-hidden">
-                        <div className="bg-red-600 text-white p-4 text-center"><h3 className="text-2xl font-bold uppercase tracking-wider">Bad Advice (Shouldn't)</h3></div>
-                         <div className="p-6 text-xl space-y-4">
+                        <div className="bg-red-600 text-white p-3 md:p-4 text-center"><h3 className="text-lg md:text-2xl font-bold uppercase tracking-wider">Bad Advice (Shouldn't)</h3></div>
+                         <div className="p-4 md:p-6 text-base md:text-xl space-y-3 md:space-y-4">
                             {data.content.grammarBox.lines.filter((l: string) => l.includes('(-)') || l.includes('SHOULDN\'T')).map((line: string, i: number) => (
                                 <div key={i} className="flex justify-between border-b border-red-50 pb-2">
                                      <span className="text-red-800 font-medium">{line.replace('(-)', '').replace('SHOULDN\'T (Bad idea / Advice)', '')}</span>
@@ -670,12 +666,12 @@ export const SpeakingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-inner">
+                <div className="bg-slate-50 rounded-2xl p-4 md:p-6 border border-slate-200 shadow-inner">
                      <h4 className="text-center font-bold text-slate-500 uppercase tracking-widest mb-4">Grammar Intel</h4>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {data.content.tips && data.content.tips.map((tip: any, idx: number) => (
-                            <div key={idx} className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-xl shadow-sm">
-                                <h5 className="font-bold text-yellow-800 text-lg mb-1">{tip.title}</h5>
+                            <div key={idx} className="bg-yellow-50 border-l-4 border-yellow-400 p-3 md:p-4 rounded-r-xl shadow-sm">
+                                <h5 className="font-bold text-yellow-800 text-base md:text-lg mb-1">{tip.title}</h5>
                                 <p className="text-slate-700 whitespace-pre-line text-sm md:text-base font-medium">{tip.text}</p>
                             </div>
                         ))}
@@ -687,28 +683,28 @@ export const SpeakingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
         {data.content.prompts && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 min-h-0">
                 {data.content.backgroundImage && (
-                    <div className="h-full rounded-3xl overflow-hidden border-4 border-ocean-900 shadow-2xl relative group">
+                    <div className="h-64 md:h-full rounded-3xl overflow-hidden border-4 border-ocean-900 shadow-2xl relative group order-last md:order-first">
                         <img src={data.content.backgroundImage} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                         <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded font-mono text-sm animate-pulse">LIVE FEED</div>
                     </div>
                 )}
-                <div className={`bg-white p-8 rounded-3xl shadow-lg border border-ocean-100 flex flex-col h-full overflow-y-auto ${!data.content.backgroundImage ? 'md:col-span-2' : ''}`}>
+                <div className={`bg-white p-6 md:p-8 rounded-3xl shadow-lg border border-ocean-100 flex flex-col h-full overflow-y-auto ${!data.content.backgroundImage ? 'md:col-span-2' : ''}`}>
                     <h3 className="text-2xl font-bold text-ocean-800 mb-6 flex items-center gap-2"><span>💬</span> {data.subtitle}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
-                         <div className="bg-blue-50 p-6 rounded-2xl border-2 border-blue-100 flex flex-col">
-                             <h4 className="text-xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">STUDENT A</h4>
-                             <ul className="space-y-4 flex-1">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 h-full">
+                         <div className="bg-blue-50 p-4 md:p-6 rounded-2xl border-2 border-blue-100 flex flex-col">
+                             <h4 className="text-lg md:text-xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">STUDENT A</h4>
+                             <ul className="space-y-3 md:space-y-4 flex-1">
                                 {data.content.prompts.filter((p: string) => !p.includes('STUDENT B') && !p.includes('STUDENT A')).slice(0, 3).map((p: string, i: number) => (
-                                    <li key={i} className="text-lg text-blue-900 flex gap-2"><span>🗣️</span> {p.replace('•', '')}</li>
+                                    <li key={i} className="text-base md:text-lg text-blue-900 flex gap-2"><span>🗣️</span> {p.replace('•', '')}</li>
                                 ))}
                              </ul>
                          </div>
-                         <div className="bg-green-50 p-6 rounded-2xl border-2 border-green-100 flex flex-col">
-                             <h4 className="text-xl font-bold text-green-800 mb-4 border-b border-green-200 pb-2">STUDENT B</h4>
-                             <ul className="space-y-4 flex-1">
+                         <div className="bg-green-50 p-4 md:p-6 rounded-2xl border-2 border-green-100 flex flex-col">
+                             <h4 className="text-lg md:text-xl font-bold text-green-800 mb-4 border-b border-green-200 pb-2">STUDENT B</h4>
+                             <ul className="space-y-3 md:space-y-4 flex-1">
                                 {data.content.prompts.filter((p: string) => !p.includes('STUDENT B') && !p.includes('STUDENT A')).slice(3).map((p: string, i: number) => (
-                                    <li key={i} className="text-lg text-green-900 flex gap-2"><span>👂</span> {p.replace('•', '')}</li>
+                                    <li key={i} className="text-base md:text-lg text-green-900 flex gap-2"><span>👂</span> {p.replace('•', '')}</li>
                                 ))}
                              </ul>
                          </div>
@@ -735,16 +731,16 @@ export const ImperativesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
     }
 
     return (
-        <div className="h-full flex flex-col items-center p-4 bg-slate-100 overflow-y-auto justify-start pt-8">
-            <div className="max-w-6xl w-full flex flex-col gap-8 shrink-0 pb-10">
+        <div className="h-full flex flex-col items-center p-4 bg-slate-100 overflow-y-auto justify-start pt-6 md:pt-8 pb-20">
+            <div className="max-w-6xl w-full flex flex-col gap-6 md:gap-8 shrink-0 pb-10">
                  
                  {/* 1. WORD BANK (Clues) - Only show if it's the activity slide */}
                  {data.content.signs && data.content.wordBank && (
-                     <div className="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-6 shadow-md">
-                         <h3 className="text-center font-bold text-yellow-800 uppercase tracking-widest mb-4">Transmission Codes (Use these!)</h3>
-                         <div className="flex flex-wrap justify-center gap-3">
+                     <div className="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-4 md:p-6 shadow-md">
+                         <h3 className="text-center font-bold text-yellow-800 uppercase tracking-widest mb-4 text-sm md:text-base">Transmission Codes (Use these!)</h3>
+                         <div className="flex flex-wrap justify-center gap-2 md:gap-3">
                              {data.content.wordBank.map((word: string, i: number) => (
-                                 <span key={i} className="bg-white px-3 py-1 rounded-lg border border-yellow-200 text-lg font-mono text-slate-700 shadow-sm">{word}</span>
+                                 <span key={i} className="bg-white px-2 py-1 md:px-3 rounded-lg border border-yellow-200 text-sm md:text-lg font-mono text-slate-700 shadow-sm">{word}</span>
                              ))}
                          </div>
                      </div>
@@ -753,29 +749,29 @@ export const ImperativesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                  {/* 2. Content: Either Grammar Rules or Activity Grid */}
                  {data.content.signs ? (
                      // Activity Mode
-                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                          {data.content.signs.map((sign: ImperativeSign, idx: number) => (
                              <button 
                                 key={idx} 
                                 onClick={() => handleMatch(idx)}
                                 disabled={matches[idx]}
-                                className={`p-4 rounded-xl shadow-md border-2 transition-all flex flex-col items-center gap-3 text-center h-full min-h-[180px] justify-between ${matches[idx] ? 'bg-green-50 border-green-500 scale-95 opacity-90' : 'bg-white border-slate-200 hover:border-red-400 hover:-translate-y-1'}`}
+                                className={`p-2 md:p-4 rounded-xl shadow-md border-2 transition-all flex flex-col items-center gap-2 md:gap-3 text-center h-full min-h-[140px] md:min-h-[180px] justify-between ${matches[idx] ? 'bg-green-50 border-green-500 scale-95 opacity-90' : 'bg-white border-slate-200 hover:border-red-400 hover:-translate-y-1'}`}
                              >
-                                 <div className="text-6xl">{sign.icon}</div>
+                                 <div className="text-4xl md:text-6xl">{sign.icon}</div>
                                  {matches[idx] ? (
-                                     <div className="text-green-800 font-bold animate-in zoom-in leading-tight text-xl">{sign.rule}</div>
+                                     <div className="text-green-800 font-bold animate-in zoom-in leading-tight text-sm md:text-xl">{sign.rule}</div>
                                  ) : (
-                                     <div className="w-full bg-slate-100 h-12 rounded border border-slate-200 flex items-center justify-center text-slate-400 text-sm">Tap to Reveal</div>
+                                     <div className="w-full bg-slate-100 h-8 md:h-12 rounded border border-slate-200 flex items-center justify-center text-slate-400 text-xs md:text-sm">Tap to Reveal</div>
                                  )}
                              </button>
                          ))}
                      </div>
                  ) : (
                      // Theory Mode (Grammar Briefing)
-                     <div className="bg-white rounded-3xl shadow-lg p-6 border-l-8 border-red-500 flex flex-col gap-6">
+                     <div className="bg-white rounded-3xl shadow-lg p-4 md:p-6 border-l-8 border-red-500 flex flex-col gap-6">
                          <div className="border-b pb-2">
-                             <h2 className="text-3xl font-bold text-red-600 mb-1 uppercase tracking-widest">{data.title}</h2>
-                             <p className="text-slate-500 font-serif italic text-lg">{data.subtitle}</p>
+                             <h2 className="text-2xl md:text-3xl font-bold text-red-600 mb-1 uppercase tracking-widest">{data.title}</h2>
+                             <p className="text-slate-500 font-serif italic text-base md:text-lg">{data.subtitle}</p>
                          </div>
                          
                          {/* Compact Theory Cards */}
@@ -800,8 +796,8 @@ export const ImperativesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                          {/* Quiz Section */}
                          {data.content.quiz && (
                              <div className="mt-4 pt-4 border-t border-slate-100">
-                                 <h4 className="text-center font-bold text-ocean-700 text-lg mb-4">Can you answer these grammar questions correctly?</h4>
-                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                 <h4 className="text-center font-bold text-ocean-700 text-base md:text-lg mb-4">Can you answer these grammar questions correctly?</h4>
+                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 md:gap-y-4">
                                      {data.content.quiz.map((q: GrammarQuizItem) => {
                                          const isRevealed = quizRevealed[q.id];
                                          return (
@@ -811,7 +807,7 @@ export const ImperativesSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                                                 disabled={isRevealed}
                                                 className={`text-left p-3 rounded-lg border flex flex-col gap-1 transition-all ${isRevealed ? 'bg-green-50 border-green-300' : 'bg-white border-slate-200 hover:border-ocean-300 hover:bg-slate-50'}`}
                                              >
-                                                 <div className="font-medium text-slate-800 text-lg">
+                                                 <div className="font-medium text-slate-800 text-base md:text-lg">
                                                      <span className="font-bold text-slate-400 mr-2">{q.id})</span>
                                                      {isRevealed 
                                                         ? q.question.replace('_____', `[ ${q.options[q.correctIndex]} ]`) 
@@ -867,22 +863,22 @@ export const ScrambleSlide: React.FC<{ data: SlideData }> = ({ data }) => {
     };
 
     return (
-        <div className="h-full flex flex-col items-center justify-center p-4 bg-slate-100 overflow-y-auto">
-            <div className="max-w-4xl w-full space-y-8">
+        <div className="h-full flex flex-col items-center justify-center p-4 bg-slate-100 overflow-y-auto pb-20">
+            <div className="max-w-4xl w-full space-y-6 md:space-y-8">
                 <div className="text-center">
-                    <h2 className="text-4xl font-bold text-ocean-900">{data.title}</h2>
-                    <p className="text-slate-500 text-xl">{data.subtitle}</p>
+                    <h2 className="text-2xl md:text-4xl font-bold text-ocean-900">{data.title}</h2>
+                    <p className="text-slate-500 text-lg">{data.subtitle}</p>
                 </div>
                 {data.content.items.map((item: ScrambleItem) => {
                     const isCorrect = checked[item.id];
                     return (
-                        <div key={item.id} className="bg-white p-6 rounded-2xl shadow-md border-2 border-slate-200">
-                             <div className="flex flex-wrap gap-2 justify-center mb-4 min-h-[60px] items-center p-4 bg-slate-50 rounded-xl">
+                        <div key={item.id} className="bg-white p-4 md:p-6 rounded-2xl shadow-md border-2 border-slate-200">
+                             <div className="flex flex-wrap gap-2 justify-center mb-4 min-h-[60px] items-center p-3 md:p-4 bg-slate-50 rounded-xl">
                                  {(orders[item.id] || []).map((word, idx) => (
                                      <div key={idx} className="flex items-center">
-                                         <button onClick={() => moveWord(item.id, idx, 'left')} className="text-slate-300 hover:text-ocean-500 px-1 disabled:opacity-0" disabled={idx === 0 || isCorrect}>‹</button>
-                                         <span className={`px-4 py-2 rounded-lg font-bold text-xl shadow-sm transition-colors ${isCorrect ? 'bg-green-500 text-white' : 'bg-white border border-ocean-200 text-ocean-800'}`}>{word}</span>
-                                         <button onClick={() => moveWord(item.id, idx, 'right')} className="text-slate-300 hover:text-ocean-500 px-1 disabled:opacity-0" disabled={idx === (orders[item.id]?.length || 0) - 1 || isCorrect}>›</button>
+                                         <button onClick={() => moveWord(item.id, idx, 'left')} className="text-slate-300 hover:text-ocean-500 px-1 disabled:opacity-0 text-xl" disabled={idx === 0 || isCorrect}>‹</button>
+                                         <span className={`px-2 py-1 md:px-4 md:py-2 rounded-lg font-bold text-base md:text-xl shadow-sm transition-colors ${isCorrect ? 'bg-green-500 text-white' : 'bg-white border border-ocean-200 text-ocean-800'}`}>{word}</span>
+                                         <button onClick={() => moveWord(item.id, idx, 'right')} className="text-slate-300 hover:text-ocean-500 px-1 disabled:opacity-0 text-xl" disabled={idx === (orders[item.id]?.length || 0) - 1 || isCorrect}>›</button>
                                      </div>
                                  ))}
                              </div>
@@ -923,11 +919,11 @@ export const ChecklistSlide: React.FC<{ data: SlideData }> = ({ data }) => {
 
     return (
         // Corrected Layout: justify-start allows content to grow downwards without being clipped at top
-        <div className="h-full flex flex-col items-center p-4 relative overflow-y-auto justify-start pt-10">
+        <div className="h-full flex flex-col items-center p-4 relative overflow-y-auto justify-start pt-6 md:pt-10 pb-20">
             <TextReferenceModal text={data.content.referenceText} highlights={highlights} />
-            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-5xl w-full border border-ocean-100 my-4 shrink-0">
-                <div className="flex items-center justify-center gap-4 mb-8"><span className="text-4xl">📝</span><div className="text-center"><h3 className="text-3xl font-bold text-ocean-800">{data.title}</h3><p className="text-slate-500">{data.subtitle}</p></div></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-3xl shadow-xl p-4 md:p-8 max-w-5xl w-full border border-ocean-100 my-4 shrink-0">
+                <div className="flex items-center justify-center gap-4 mb-6 md:mb-8"><span className="text-3xl md:text-4xl">📝</span><div className="text-center"><h3 className="text-2xl md:text-3xl font-bold text-ocean-800">{data.title}</h3><p className="text-slate-500">{data.subtitle}</p></div></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {data.content.items.map((item: ChecklistItem, idx: number) => {
                         const isChecked = checkedItems.includes(item.id);
                         let bgClass = "bg-white hover:bg-slate-50";
@@ -942,10 +938,10 @@ export const ChecklistSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                         } else if (isChecked) { bgClass = "bg-ocean-50"; borderClass = "border-ocean-500"; }
 
                         return (
-                            <button key={item.id} onClick={() => toggleItem(item.id)} className={`p-4 rounded-xl border-2 text-left flex items-center gap-4 text-xl transition-all ${bgClass} ${borderClass}`}>
+                            <button key={item.id} onClick={() => toggleItem(item.id)} className={`p-3 md:p-4 rounded-xl border-2 text-left flex items-center gap-3 md:gap-4 text-lg md:text-xl transition-all ${bgClass} ${borderClass}`}>
                                 <span className={`text-xs px-1 rounded border border-black/10 ${highlightColor}`}>{item.id}</span>
-                                <span className="text-2xl">{icon}</span>
-                                <span className="font-medium">{item.text}</span>
+                                <span className="text-xl md:text-2xl">{icon}</span>
+                                <span className="font-medium text-base md:text-xl">{item.text}</span>
                             </button>
                         );
                     })}
@@ -954,16 +950,16 @@ export const ChecklistSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                 {/* Verification & Extension Task */}
                 <div className="mt-8 flex flex-col items-center gap-6">
                     {!isVerified ? (
-                        <button onClick={() => setIsVerified(true)} className="bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-3 px-12 rounded-full shadow-lg text-xl transition-transform active:scale-95">Verify Log</button>
+                        <button onClick={() => setIsVerified(true)} className="bg-ocean-600 hover:bg-ocean-700 text-white font-bold py-3 px-12 rounded-full shadow-lg text-lg md:text-xl transition-transform active:scale-95">Verify Log</button>
                     ) : (
                         <div className="w-full text-center animate-in fade-in slide-in-from-bottom-2">
                              <p className="text-lg font-bold text-ocean-700 mb-4">Verification Complete.</p>
                              
                              {/* Extension Task */}
                              {data.content.extensionQuestion && (
-                                 <div className="bg-yellow-50 p-6 rounded-2xl border-2 border-yellow-200 max-w-2xl mx-auto">
+                                 <div className="bg-yellow-50 p-4 md:p-6 rounded-2xl border-2 border-yellow-200 max-w-2xl mx-auto">
                                      <h4 className="font-bold text-yellow-800 mb-2">🤔 {data.content.extensionQuestion}</h4>
-                                     <div className="flex gap-2">
+                                     <div className="flex flex-col md:flex-row gap-2">
                                          <input 
                                             type="text" 
                                             value={extensionAnswer}
@@ -999,24 +995,24 @@ export const QASlide: React.FC<{ data: SlideData }> = ({ data }) => {
     })).filter((h: HighlightData) => h.text !== '');
 
     return (
-        <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-slate-50 justify-start pt-10 relative">
+        <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-slate-50 justify-start pt-6 md:pt-10 pb-20 relative">
             <TextReferenceModal text={data.content.referenceText} highlights={highlights} />
             <div className="max-w-4xl w-full space-y-4 shrink-0">
-                <div className="text-center mb-8"><h3 className="text-4xl font-bold text-ocean-900 mb-2">{data.title}</h3><div className="inline-block px-4 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-bold tracking-widest uppercase border border-yellow-200">{data.subtitle}</div></div>
+                <div className="text-center mb-6 md:mb-8"><h3 className="text-2xl md:text-4xl font-bold text-ocean-900 mb-2">{data.title}</h3><div className="inline-block px-4 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase border border-yellow-200">{data.subtitle}</div></div>
                 {data.content.questions.map((item: QAItem, idx: number) => {
                     const isOpen = openId === item.id;
                     const colorClass = HIGHLIGHT_COLORS[idx % HIGHLIGHT_COLORS.length].split(' ')[0];
                     return (
                         <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 transition-all duration-300 hover:shadow-lg">
-                            <button onClick={() => setOpenId(isOpen ? null : item.id)} className={`w-full text-left p-6 flex justify-between items-center transition-colors ${isOpen ? 'bg-ocean-50' : 'bg-white'}`}>
+                            <button onClick={() => setOpenId(isOpen ? null : item.id)} className={`w-full text-left p-4 md:p-6 flex justify-between items-center transition-colors ${isOpen ? 'bg-ocean-50' : 'bg-white'}`}>
                                 <div className="flex items-center gap-4">
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg border border-black/10 ${colorClass}`}>Q{item.id}</div>
-                                    <span className="text-xl md:text-2xl font-bold text-slate-800">{item.question}</span>
+                                    <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm md:text-lg border border-black/10 shrink-0 ${colorClass}`}>Q{item.id}</div>
+                                    <span className="text-lg md:text-2xl font-bold text-slate-800 leading-tight">{item.question}</span>
                                 </div>
-                                <span className={`text-2xl transition-transform duration-300 text-slate-400 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
+                                <span className={`text-2xl transition-transform duration-300 text-slate-400 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
                             </button>
-                            <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                <div className="p-6 pt-0 pl-20 pr-8"><div className="p-4 bg-green-50 rounded-xl border-l-4 border-green-500 text-xl text-green-900 font-medium leading-relaxed">{item.answer}</div></div>
+                            <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className="p-4 md:p-6 pt-0 pl-16 md:pl-20 pr-4 md:pr-8"><div className="p-3 md:p-4 bg-green-50 rounded-xl border-l-4 border-green-500 text-lg md:text-xl text-green-900 font-medium leading-relaxed">{item.answer}</div></div>
                             </div>
                         </div>
                     );
@@ -1065,17 +1061,17 @@ export const MatchingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
     }).filter(h => h.text !== '');
 
     return (
-        <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-slate-50 justify-start pt-10 relative">
+        <div className="h-full flex flex-col items-center p-4 overflow-y-auto bg-slate-50 justify-start pt-6 md:pt-10 pb-20 relative">
              <TextReferenceModal text={data.content.referenceText} highlights={highlights} />
              
              <div className="max-w-6xl w-full shrink-0">
-                <div className="text-center mb-8">
-                    <h3 className="text-3xl font-bold text-ocean-900">{data.title}</h3>
-                    <p className="text-slate-500">{data.subtitle}</p>
+                <div className="text-center mb-6 md:mb-8">
+                    <h3 className="text-2xl md:text-3xl font-bold text-ocean-900">{data.title}</h3>
+                    <p className="text-slate-500 text-sm md:text-base">{data.subtitle}</p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-8 md:gap-16 justify-center items-stretch">
-                    <div className="flex-1 space-y-4">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center items-stretch">
+                    <div className="flex-1 space-y-3 md:space-y-4">
                         {data.content.pairs.map((pair: MatchingPair) => {
                             const isMatched = matchedIds.includes(pair.id);
                             const isSelected = selectedId === pair.id;
@@ -1087,7 +1083,7 @@ export const MatchingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                                     key={pair.id}
                                     onClick={() => handleLeftClick(pair.id)}
                                     disabled={isMatched}
-                                    className={`w-full p-4 rounded-xl text-left border-2 transition-all duration-200 ${
+                                    className={`w-full p-3 md:p-4 rounded-xl text-left border-2 transition-all duration-200 ${
                                         isMatched 
                                             ? `${colorClass} border-transparent opacity-80 cursor-default shadow-sm` 
                                             : isSelected 
@@ -1096,17 +1092,17 @@ export const MatchingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                                     }`}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <span className={`w-8 h-8 flex items-center justify-center rounded-full text-xs font-bold ${isMatched ? 'bg-white/50 text-slate-800' : 'bg-slate-100 text-slate-500'}`}>
+                                        <span className={`w-8 h-8 flex items-center justify-center rounded-full text-xs font-bold shrink-0 ${isMatched ? 'bg-white/50 text-slate-800' : 'bg-slate-100 text-slate-500'}`}>
                                             {pair.id}
                                         </span>
-                                        <span className="text-lg font-medium text-slate-800">{pair.left}</span>
+                                        <span className="text-base md:text-lg font-medium text-slate-800">{pair.left}</span>
                                     </div>
                                 </button>
                             );
                         })}
                     </div>
 
-                    <div className="flex-1 space-y-4">
+                    <div className="flex-1 space-y-3 md:space-y-4">
                          {rightItems.map((pair: MatchingPair) => {
                             const isMatched = matchedIds.includes(pair.id);
                             const index = matchedIds.indexOf(pair.id);
@@ -1117,7 +1113,7 @@ export const MatchingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                                     key={pair.id}
                                     onClick={() => handleRightClick(pair.id)}
                                     disabled={isMatched}
-                                    className={`w-full p-4 rounded-xl text-left border-2 transition-all duration-200 ${
+                                    className={`w-full p-3 md:p-4 rounded-xl text-left border-2 transition-all duration-200 ${
                                         isMatched 
                                             ? `${colorClass} border-transparent opacity-80 cursor-default shadow-sm` 
                                             : selectedId !== null && !isMatched
@@ -1125,7 +1121,7 @@ export const MatchingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                                                 : 'bg-white border-slate-200 opacity-60'
                                     }`}
                                 >
-                                     <span className="text-lg font-medium text-slate-800">{pair.right}</span>
+                                     <span className="text-base md:text-lg font-medium text-slate-800">{pair.right}</span>
                                 </button>
                             );
                          })}
@@ -1147,22 +1143,22 @@ export const MatchingSlide: React.FC<{ data: SlideData }> = ({ data }) => {
 // --- DRILL SLIDE ---
 export const DrillSlide: React.FC<{ data: SlideData }> = ({ data }) => {
     return (
-        <div className="h-full flex flex-col items-center justify-center p-4 bg-slate-100 overflow-y-auto">
-             <div className="max-w-4xl w-full bg-white rounded-3xl shadow-xl p-8 border border-slate-200">
-                <div className="text-center mb-8">
-                    <h3 className="text-3xl font-bold text-ocean-900">{data.title}</h3>
-                    <p className="text-slate-500 text-lg">{data.subtitle}</p>
+        <div className="h-full flex flex-col items-center justify-center p-4 bg-slate-100 overflow-y-auto pb-20">
+             <div className="max-w-4xl w-full bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-slate-200">
+                <div className="text-center mb-6 md:mb-8">
+                    <h3 className="text-2xl md:text-3xl font-bold text-ocean-900">{data.title}</h3>
+                    <p className="text-slate-500 text-base md:text-lg">{data.subtitle}</p>
                 </div>
                 
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                     {data.content.items && data.content.items.map((item: DrillItem) => (
-                        <div key={item.id} className="p-4 bg-ocean-50 rounded-xl border-l-4 border-ocean-500 flex items-center gap-4">
+                        <div key={item.id} className="p-3 md:p-4 bg-ocean-50 rounded-xl border-l-4 border-ocean-500 flex items-center gap-4">
                              {item.speaker && (
-                                <div className="w-10 h-10 rounded-full bg-ocean-200 flex items-center justify-center font-bold text-ocean-800 shrink-0">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-ocean-200 flex items-center justify-center font-bold text-ocean-800 shrink-0">
                                     {item.speaker.charAt(0)}
                                 </div>
                              )}
-                             <div className="text-xl text-slate-800 flex-1 font-medium font-serif leading-relaxed">
+                             <div className="text-lg md:text-xl text-slate-800 flex-1 font-medium font-serif leading-relaxed">
                                 {item.text}
                              </div>
                         </div>
@@ -1189,10 +1185,10 @@ export const DebriefSlide: React.FC<{ data: SlideData }> = ({ data }) => {
              {/* Full screen dashboard layout */}
              <div className="relative z-10 w-full h-full flex flex-col bg-[#f4f4f4] overflow-y-auto">
                  {/* Top Bar */}
-                 <div className="bg-slate-900 text-white p-6 md:px-12 flex justify-between items-center shadow-lg shrink-0">
+                 <div className="bg-slate-900 text-white p-4 md:px-12 flex justify-between items-center shadow-lg shrink-0">
                      <div>
-                         <h1 className="text-3xl md:text-5xl font-black tracking-tighter uppercase">{data.title}</h1>
-                         <div className="flex gap-6 mt-2 font-mono text-sm text-slate-400">
+                         <h1 className="text-2xl md:text-5xl font-black tracking-tighter uppercase">{data.title}</h1>
+                         <div className="flex flex-wrap gap-2 md:gap-6 mt-1 md:mt-2 font-mono text-[10px] md:text-sm text-slate-400">
                              <span>UNIT: 4D</span>
                              <span>LOC: ULUDAĞ</span>
                              <span>OP: SPRINGWATCH</span>
@@ -1205,35 +1201,35 @@ export const DebriefSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                  </div>
 
                  {/* Main Content Area - Horizontal Spread */}
-                 <div className="flex-1 p-6 md:p-12 overflow-y-auto">
-                     <div className="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
+                 <div className="flex-1 p-4 md:p-12 overflow-y-auto pb-20">
+                     <div className="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 h-full">
                          
                          {/* Left Panel: Personnel */}
-                         <div className="bg-white p-8 shadow-sm border border-slate-200 flex flex-col gap-6">
+                         <div className="bg-white p-6 md:p-8 shadow-sm border border-slate-200 flex flex-col gap-4 md:gap-6">
                              <h3 className="font-bold text-slate-400 uppercase tracking-widest border-b pb-2">Personnel File</h3>
                              <div className="flex items-center gap-4">
-                                 <div className="w-24 h-24 bg-slate-200 rounded-full flex items-center justify-center text-4xl grayscale">👤</div>
+                                 <div className="w-16 h-16 md:w-24 md:h-24 bg-slate-200 rounded-full flex items-center justify-center text-3xl md:text-4xl grayscale">👤</div>
                                  <div>
-                                     <div className="font-bold text-xl">SCOUT</div>
-                                     <div className="text-slate-500">Level A2</div>
+                                     <div className="font-bold text-lg md:text-xl">SCOUT</div>
+                                     <div className="text-slate-500 text-sm">Level A2</div>
                                  </div>
                              </div>
-                             <div className="bg-yellow-50 p-4 border-l-4 border-yellow-400 text-slate-700 italic">
+                             <div className="bg-yellow-50 p-4 border-l-4 border-yellow-400 text-slate-700 italic text-sm md:text-base">
                                  "Sailor has demonstrated excellent command of advice (should) and rules (imperatives)."
                              </div>
                              
-                             <div className="mt-auto pt-8">
+                             <div className="mt-auto pt-4 md:pt-8">
                                  <div className="text-xs text-slate-400 uppercase mb-1">Approved By</div>
-                                 <div className="font-serif text-3xl text-blue-900 italic font-bold">Cpt. English</div>
+                                 <div className="font-serif text-2xl md:text-3xl text-blue-900 italic font-bold">Cpt. English</div>
                              </div>
                          </div>
 
                          {/* Center/Right Panel: Proficiency Log (Wider) */}
-                         <div className="md:col-span-2 bg-white p-8 shadow-sm border border-slate-200">
-                             <h3 className="font-bold text-slate-400 uppercase tracking-widest border-b pb-2 mb-6">Operational Proficiency Log</h3>
-                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                         <div className="md:col-span-2 bg-white p-6 md:p-8 shadow-sm border border-slate-200">
+                             <h3 className="font-bold text-slate-400 uppercase tracking-widest border-b pb-2 mb-4 md:mb-6">Operational Proficiency Log</h3>
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                                  {data.content.checklist.map((item: DebriefItem, i: number) => (
-                                     <div key={i} className="flex items-start gap-4 p-4 bg-slate-50 border border-slate-100 rounded hover:bg-white hover:shadow-md transition-all">
+                                     <div key={i} className="flex items-start gap-4 p-3 md:p-4 bg-slate-50 border border-slate-100 rounded hover:bg-white hover:shadow-md transition-all">
                                          <div className="mt-1 w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">✓</div>
                                          <div>
                                              <span className="font-bold block text-sm uppercase text-slate-800 mb-1">{item.text}</span>
@@ -1247,8 +1243,8 @@ export const DebriefSlide: React.FC<{ data: SlideData }> = ({ data }) => {
                  </div>
 
                  {/* Stamp Overlay */}
-                 <div className={`absolute bottom-10 right-10 md:right-20 pointer-events-none transition-all duration-700 ${stamped ? 'opacity-90 scale-100' : 'opacity-0 scale-150'}`}>
-                     <div className="border-8 border-green-800 text-green-800 font-black text-6xl md:text-8xl p-6 rounded-xl rotate-[-12deg] uppercase" style={{ mixBlendMode: 'multiply' }}>
+                 <div className={`absolute bottom-20 right-4 md:bottom-10 md:right-20 pointer-events-none transition-all duration-700 ${stamped ? 'opacity-90 scale-100' : 'opacity-0 scale-150'}`}>
+                     <div className="border-4 md:border-8 border-green-800 text-green-800 font-black text-4xl md:text-8xl p-4 md:p-6 rounded-xl rotate-[-12deg] uppercase" style={{ mixBlendMode: 'multiply' }}>
                          APPROVED
                      </div>
                  </div>
