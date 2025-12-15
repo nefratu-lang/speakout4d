@@ -226,11 +226,7 @@ export const SLIDES: SlideData[] = [
       ] as KeyPoint[],
       text: `Uludağ has four seasons, but many people think the best time to visit is early spring. In spring, the weather changes a lot. Some mornings are cold and cloudy, and some afternoons are sunny and warm. Sometimes it rains, and sometimes there is a small storm, so you should always check the weather before you travel. You should also bring warm clothes because the mountain can be very cool in the evenings, even on a sunny day.
 
-When the snow starts to melt, small white blossoms appear on the trees. People in Türkiye call this time “Bahar Dalgası”, because a soft wave of colour moves down the mountain. Many visitors come to Uludağ to enjoy this short season. People walk on the mountain paths, take photos of the trees, drink hot tea, and enjoy the fresh air. You should go early if you want a quiet place. If you arrive late, it becomes crowded, and you shouldn’t expect to find a good spot to sit.
-
-During this week, some families make small picnics when the weather is dry and warm. Others buy simple local food from small shops. But visitors shouldn’t leave rubbish on the ground—please use the bins. Uludağ is beautiful, and everyone should help keep it clean.
-
-The blossoms stay for only about one week, and then they begin to fall. It is a short time, but many people say it is the most beautiful week of the year. If you enjoy nature, fresh air, and changing weather, you should visit Uludağ in early spring. Just remember: check the weather, go early, and bring a warm jacket.`
+When the snow starts to melt, small white blossoms appear on the trees. People in Türkiye call this time “Bahar Dalgası”, because a soft wave of colour moves down the mountain. Many visitors come to Uludağ to enjoy this short season. People walk on the mountain paths, take photos of the trees, drink hot tea, and enjoy the fresh air. You should go early if you want a quiet place. If you arrive late, it becomes crowded, and you shouldn’t expect to find a good spot to sit.`
     }
   },
 
@@ -241,6 +237,7 @@ The blossoms stay for only about one week, and then they begin to fall. It is a 
     title: "Detailed Intel: Protection",
     subtitle: "Picnics & Rules",
     content: {
+      backgroundVideo: "/media/background_snow.mp4",
       backgroundImage: hikerAdvice,
       footerImage: uludagSpring, 
       audioSrc: "/media/uludag_part2.mp3",
