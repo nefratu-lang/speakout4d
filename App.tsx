@@ -24,6 +24,8 @@ import {
 
 const App = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false); // Tam ekran takibi
+  
   const currentSlide = SLIDES[currentSlideIndex];
   const progress = ((currentSlideIndex + 1) / SLIDES.length) * 100;
 
@@ -39,7 +41,7 @@ const App = () => {
     }
   };
 
-  // Keyboard Navigation
+  // Keyboard Navigation & Fullscreen Listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
@@ -49,15 +51,36 @@ const App = () => {
       }
     };
 
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
   }, [currentSlideIndex]);
+
+  // --- FULLSCREEN TOGGLE ---
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((e) => {
+        console.error(`Fullscreen error: ${e.message}`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   const renderSlideContent = () => {
     switch (currentSlide.type) {
       case SlideType.COVER: return <CoverSlide data={currentSlide} />;
       case SlideType.OBJECTIVES: return <ObjectivesSlide data={currentSlide} />;
-      // Pass nextSlide specifically to IceBreaker for the "Begin Operation" button
       case SlideType.ICE_BREAKER: return <IceBreakerSlide data={currentSlide} onNext={nextSlide} />;
       case SlideType.READING: return <ReadingSlide data={currentSlide} />;
       case SlideType.COMPREHENSION_TF: return <ComprehensionTFSlide data={currentSlide} />;
@@ -78,10 +101,24 @@ const App = () => {
   };
 
   return (
-    // FULL SCREEN CONTAINER - Using h-full to inherit 100dvh from body
-    <div className="w-full h-full flex flex-col bg-ocean-50 font-sans overflow-hidden">
+    // FULL SCREEN CONTAINER
+    <div className="w-full h-full flex flex-col bg-ocean-50 font-sans overflow-hidden relative">
         
-      {/* Top Bar (Header) - Sticky at top - Compact on Mobile */}
+      {/* --- GLOBAL FULLSCREEN BUTTON --- */}
+      {/* Konumu: Sağ üst, ama slide sayacının solunda kalacak şekilde ayarlandı */}
+      <button 
+        onClick={toggleFullscreen}
+        className="fixed top-2 right-16 md:top-3 md:right-24 z-[60] p-2 bg-white/80 hover:bg-white backdrop-blur-sm text-ocean-800 rounded-full shadow-md border border-ocean-100 transition-all active:scale-95"
+        title="Toggle Fullscreen"
+      >
+        {isFullscreen ? (
+           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+        ) : (
+           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        )}
+      </button>
+
+      {/* Top Bar (Header) */}
       {currentSlide.type !== SlideType.COVER && (
         <header className="bg-white border-b border-ocean-100 h-12 md:h-14 flex items-center justify-between px-3 md:px-8 shadow-sm shrink-0 z-20">
           <div className="flex items-center gap-2 md:gap-3 overflow-hidden">
@@ -104,14 +141,14 @@ const App = () => {
         </div>
       )}
 
-      {/* Main Content Area - Fills remaining height */}
+      {/* Main Content Area */}
       <main className="flex-1 overflow-hidden relative bg-[url('https://www.transparenttextures.com/patterns/paper.png')] w-full">
         <div className="absolute inset-0 w-full h-full">
             {renderSlideContent()}
         </div>
       </main>
 
-      {/* Navigation Footer - Sticky at bottom - Safe Area for Mobile */}
+      {/* Navigation Footer */}
       <footer className="bg-white border-t border-slate-200 px-3 py-3 md:px-6 md:py-4 shrink-0 z-20 flex justify-between items-center shadow-[0_-4px_15px_-3px_rgba(0,0,0,0.1)] pb-safe">
         <button
           onClick={prevSlide}
@@ -125,7 +162,7 @@ const App = () => {
           <span className="hidden md:inline">BACK</span>
         </button>
 
-        {/* Slide Indicator Dots - Hide on small screens */}
+        {/* Slide Indicator Dots */}
         {currentSlide.type !== SlideType.COVER && (
           <div className="hidden lg:flex gap-1.5 overflow-x-auto max-w-[50%] px-2">
             {SLIDES.map((_, idx) => (
